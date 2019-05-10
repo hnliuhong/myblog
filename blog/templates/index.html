@@ -7,6 +7,9 @@
 <body>
     <!-- 采用双大括号可以解析返回过来的dict格式,
         例如此处可以解析 key为hello的数据  -->
-    {{ article.id }}|{{ article.title }}|{{ article.content }}
+    {% for article in articles %}
+         <div>{{ article.id }}|{{ article.title }}| {{ article.content }}|删除|更新</div>
+    {% endfor %}
+
 </body>
 </html>

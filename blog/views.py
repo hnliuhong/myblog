@@ -12,5 +12,5 @@ def index(request):
     # a标签,表单的提交都属于有刷新请求,返回的是html页面
     # return HttpResponse("hello django")
     # 不用在使用sql语句,所有的操作都是针对对象
-    article = Article.objects.get(id=1)
-    return render(request,"index.html",{'article':article})
+    articles = Article.objects.all()
+    return render(request,"index.html",{'articles':articles})
