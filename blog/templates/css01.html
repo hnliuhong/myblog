@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS基本演示</title>
+    <!-- css js 需要声明 -->
+    <style type="text/css">
+        /*  label: 样式名与标签相同,可以影响当前页面同名所有HTML标签 */
+        p{
+            /*  属性名:属性值*/
+            color:red;
+        }
+        /* class 样式, 采用.开头,可以作用于不同的html标签,通过class属性来指定
+            class > label标签, class由于非常灵活，很多框架都是采用class
+        */
+        .abc{
+            color: green;
+        }
+
+        /* id 样式：采用#开头,优先级最高,但是页面只能使用一次(js会通过id快速定位元素)
+            此样式通过id属性来指定
+        */
+        #abc{
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <p id="abc">我是段落p标签2</p>
+    <p class="abc" id="abc">我是段落p标签1</p>
+    <span class="abc">我是span标签</span>
+</body>
+</html>

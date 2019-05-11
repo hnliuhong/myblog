@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS混合运算</title>
+    <!-- css js 需要声明 -->
+    <style type="text/css">
+        /*
+            空格: 后代选择器
+             > : 子选择器
+             + : 直接后置选择器，当前标签的后置标签
+             ~ : 后置选择器
+             ,: 并集选择器
+             样式直接写在一起，交集
+             [属性]:
+        */
+        div ~ span {
+            color: red;
+        }
+
+        a#abc {
+            color: green;
+        }
+        [class]{
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p>
+            <span class="abc"> div > p >span</span>
+        </p>
+        <span class="abc"> div > span </span>
+    </div>
+    <p> div + p </p>
+    <span> body > span </span>
+    <a id="abc">我是a标签</a>
+    <a href="http://www.hao123.com">我是a标签</a>
+    <a class="abc">我是a标签</a>
+</body>
+</html>
