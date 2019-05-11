@@ -4,13 +4,26 @@
     <meta charset="UTF-8">
     <title>第一个django页面</title>
     <!-- 加载了文件时,需要重新启动容器-->
-    <link rel="stylesheet" href="/static/bootstrap.css">
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
 </head>
 <body>
 <div class="container">
     <!-- 采用双大括号可以解析返回过来的dict格式,
 例如此处可以解析 key为hello的数据  -->
     <!-- html css javascript -->
+    <form class="form-inline" action="#" method="post" style="margin: 10px 0px">
+        <!-- form-group 组通常一个label标签 + 表单元素-->
+        <div class="form-group">
+            <label class="control-label">搜索关键字</label>
+            <input type="text" class="form-control" style="width: 500px" placeholder="请输入搜索关键字">
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+            给我搜
+        </button>
+    </form>
+
     <table class="table table-striped table-bordered table-hover">
         <!--th是标题列(默认加粗,居中),tr行,td列 -->
         <tr>
