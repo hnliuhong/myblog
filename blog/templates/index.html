@@ -5,6 +5,7 @@
     <title>第一个django页面</title>
     <!-- 加载了文件时,需要重新启动容器-->
     <link rel="stylesheet" href="/static/css/bootstrap.css">
+    <script type="text/javascript" src="/static/js/jquery.js"></script>
 </head>
 <body>
 <div class="container">
@@ -39,13 +40,29 @@
                 <td>{{ article.content }}</td>
                 <!-- templates 里面的页面是不能直接访问,都是通过view控制层来间接访问 -->
                 <!-- a标签,get请求,可以直接在地址栏后面传递参数 -->
-                <td><a href="/get_id/{{ article.id }}">更新</a>|<a href="/delete/{{ article.id }}">删除</a>|
+                <td><a href="/get_id/{{ article.id }}">更新</a>|
+                    <a href="/delete/{{ article.id }}">删除</a>|
+                    <button type="button" class="btnDel" id="{{ article.id }}">ajax删除</button>|
                     <a href="/save/">插入</a></td>
             </tr>
         {% endfor %}
     </table>
 
 </div>
-
 </body>
+   <script type="text/javascript">
+        // 此处完成js文件的编写
+        // 1: 给按钮添加事件(删除当前行)  $ 代表jquery意思
+        //  Jquery('#btnDel') 通过id选择器找到页面唯一按钮,并且绑定事件
+        $('.btnDel').click(function(){
+            // 删除按钮单击的当前行 this代表当前被单击按钮
+            $(this).parent().parent().remove() // 把html按钮标签转化jquery对象
+            // 获取当前按钮的id属性值
+
+            // 发送ajax请求,把要删除传送到后台,完成真正的删除操作
+            $.get('/ajax/' + $(this).attr("id"), null,function(result){
+                alert(result)
+            }, "text")
+        });  // 绑定一个方法
+    </script>
 </html>

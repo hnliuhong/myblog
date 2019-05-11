@@ -29,6 +29,15 @@ def delete(request, article_id):
     articles = Article.objects.all()
     return render(request, "index.html", {'articles': articles})
 
+def ajax(request, article_id):
+    # orm映射,直接操作对象即可
+    print(article_id, type(article_id))
+    article = Article.objects.get(pk=article_id)
+    # 操作对象,就是操作记录
+    article.delete()
+    # ajax请求,返回的肯定不是页面(因为页面没有刷新),通常返回一个状态码
+    return HttpResponse("删除成功!")
+
 
 # id参数名称必须与urls.py配置名称相同
 def get_id(request, abc):

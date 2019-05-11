@@ -23,8 +23,9 @@ urlpatterns = [
     path('show/', bv.index),
     # urls.py中参数采用<类型:变量名>表示,类型不是必须的
     path('delete/<int:article_id>/', bv.delete),
+    path('ajax/<int:article_id>/', bv.ajax),
     path('get_id/<int:abc>/', bv.get_id),
-    path('save/',bv.html),
+    path('save/', bv.html),
     # <>方式是get请求,如果是post请求则不支持
     path('update/', bv.update),
     path('insert/', bv.insert),
