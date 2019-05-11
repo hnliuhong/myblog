@@ -21,4 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # http://127.0.0.1:8000/show/
     path('show/', bv.index),
+    # urls.py中参数采用<类型:变量名>表示,类型不是必须的
+    path('delete/<int:article_id>/', bv.delete),
 ]

@@ -6,6 +6,3 @@ class Article(models.Model):
     # 此处定义的属性,对应数据库的字段
     title = models.CharField(max_length=30, default='default title')
     content = models.TextField(null=True)
-
-    def __str__(self):
-        return f'id为{self.id},标题为{self.title},内容为{self.content}'

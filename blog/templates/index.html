@@ -5,11 +5,27 @@
     <title>第一个django页面</title>
 </head>
 <body>
-    <!-- 采用双大括号可以解析返回过来的dict格式,
-        例如此处可以解析 key为hello的数据  -->
+<!-- 采用双大括号可以解析返回过来的dict格式,
+    例如此处可以解析 key为hello的数据  -->
+<!-- html css javascript -->
+<table border="1" width="600px">
+    <!--th是标题列(默认加粗,居中),tr行,td列 -->
+    <tr>
+        <th>编号</th>
+        <th>文章标题</th>
+        <th>正文内容</th>
+        <th>操作</th>
+    </tr>
     {% for article in articles %}
-         <div>{{ article.id }}|{{ article.title }}| {{ article.content }}|删除|更新</div>
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ article.title }}</td>
+            <td>{{ article.content }}</td>
+            <!-- templates 里面的页面是不能直接访问,都是通过view控制层来间接访问 -->
+            <!-- a标签,get请求,可以直接在地址栏后面传递参数 -->
+            <td>更新|<a href="/delete/{{ article.id }}">删除</a></td>
+        </tr>
     {% endfor %}
-
+</table>
 </body>
 </html>
