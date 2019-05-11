@@ -14,6 +14,7 @@ def index(request):
     # return HttpResponse("hello django")
     # 不用在使用sql语句,所有的操作都是针对对象
     articles = Article.objects.all()
+    # 转发,内部是可以跳转到template.html, 数据通过字典形式存储,
     return render(request, "index.html", {'articles': articles})
 
 
@@ -30,8 +31,9 @@ def delete(request, article_id):
 
 
 # id参数名称必须与urls.py配置名称相同
-def get_id(request, id):
-    article = Article.objects.get(pk=id)
+def get_id(request, abc):
+    article = Article.objects.get(pk=abc)
+    # 存在数据之间的共享,则采用的是转发模式
     return render(request, "update.html", {'article': article})
 
 
@@ -48,3 +50,17 @@ def update(request):
     # from django.http import HttpResponseRedirect
     # 重定向是不应该直接访问index.html，需要通过urls.py中转请求
     return HttpResponseRedirect("/show/")
+
+
+def insert(request):
+    article = Article()
+    article.title = request.POST.get('title')
+    article.content = request.POST.get('content')
+    # 如果有id会执行插入操作
+    article.save()
+    # 当前页面,与目标页面不存在数据共享,因此执行重定向
+    return HttpResponseRedirect("/show/")
+
+
+def html(request):
+    return render(request, "save.html")
