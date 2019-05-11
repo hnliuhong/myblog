@@ -23,4 +23,7 @@ urlpatterns = [
     path('show/', bv.index),
     # urls.py中参数采用<类型:变量名>表示,类型不是必须的
     path('delete/<int:article_id>/', bv.delete),
+    path('get_id/<int:id>/', bv.get_id),
+    # <>方式是get请求,如果是post请求则不支持
+    path('update/', bv.update),
 ]

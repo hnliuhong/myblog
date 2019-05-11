@@ -23,7 +23,7 @@
             <td>{{ article.content }}</td>
             <!-- templates 里面的页面是不能直接访问,都是通过view控制层来间接访问 -->
             <!-- a标签,get请求,可以直接在地址栏后面传递参数 -->
-            <td>更新|<a href="/delete/{{ article.id }}">删除</a></td>
+            <td><a href="/get_id/{{ article.id }}">更新</a>|<a href="/delete/{{ article.id }}">删除</a></td>
         </tr>
     {% endfor %}
 </table>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>更新文章</title>
+</head>
+<body>
+<form action="/update/" method="post">
+    {% csrf_token %}
+    <label>文章标题</label>
+    <input type="text" name="title" value="{{ article.title }}"/>
+    <br />
+    <label>文章内容</label>
+    <input type="text" name="content" value="{{ article.content }}"/>
+    <br />
+    <button type="submit">更新</button>
+    <input type="hidden" name="id" value="{{ article.id }}"/>
+    <input type="text" name="aa"/>
+</form>
+</body>
+</html>

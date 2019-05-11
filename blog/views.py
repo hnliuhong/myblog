@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 from .models import Article
 
 
@@ -26,3 +27,24 @@ def delete(request, article_id):
     article.delete()
     articles = Article.objects.all()
     return render(request, "index.html", {'articles': articles})
+
+
+# id参数名称必须与urls.py配置名称相同
+def get_id(request, id):
+    article = Article.objects.get(pk=id)
+    return render(request, "update.html", {'article': article})
+
+
+def update(request):
+    # get post请求都可以通过request数据来获取参数信息
+    id = request.POST.get('id')
+    # 更新对象就等同于更新记录
+    article = Article.objects.get(pk=id)
+    article.title = request.POST.get('title')
+    article.content = request.POST.get('content')
+    # 如果有id则save()会执行更新操作,否则插入操作
+    article.save()
+    # 转发(render)与重定向区别：重定向是不能够共享request数据
+    # from django.http import HttpResponseRedirect
+    # 重定向是不应该直接访问index.html，需要通过urls.py中转请求
+    return HttpResponseRedirect("/show/")
